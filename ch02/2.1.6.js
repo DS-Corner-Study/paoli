@@ -23,3 +23,34 @@ Zero.prototype.sayName = function() {
 };
 var oldZero = new Zero('human', 'Zero', 'Cho');
 Human.isHuman(oldZero); // true
+
+
+class Human {
+    constructor(type = 'human') {
+      this.type = type;
+    }
+  
+    static isHuman(human) {       // staic 키워드로 전환
+      return human instanceof Human;
+    }
+  
+    breathe() {
+      alert('h-a-a-a-m');
+    }
+}
+  
+class Zero extends Human {  // 아하!
+    constructor(type, firstName, lastName) {
+      super(type);  
+      this.firstName = firstName;
+      this.lastName = lastName;
+    }
+  
+    sayName() {
+      super.breathe();
+      alert(`${this.firstName} ${this.lastName}`);
+    }
+}
+  
+const newZero = new Zero('human', 'Zero', 'Cho');
+Human.isHuman(newZero); // true
