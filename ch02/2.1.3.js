@@ -6,8 +6,8 @@ var es='ES';
 var oldObject = {
 		sayJS: function() {              // 1번
 		    console.log('JS');
-    }
-		sayNode: sayNode,                // 2번
+    },
+	sayNode: sayNode,                // 2번
 }
 oldObject[es + 6] = 'Fantastic';     // 3번
 oldObject.sayNode();
