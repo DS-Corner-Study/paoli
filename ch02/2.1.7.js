@@ -17,3 +17,40 @@ promise
   .finally(() => { // 끝나고 무조건 실행
     console.log('무조건');
   });
+
+
+
+function findAndSaveUser(Users) {
+    Users.findOne({})
+      .then((user) => {
+        user.name = 'zero';
+        return user.save();
+      })
+      .then((user) => {
+        return Users.findOne({ gender: 'm' });
+      })
+      .then((user) => {
+        // 생략
+      })
+      .catch(err => {
+        console.error(err);
+      });
+}
+
+const promise1 = Promise.resolve('성공1');
+const promise2 = Promise.reject('실패2');
+const promise3 = Promise.resolve('성공3');
+Promise.allSettled([promise1, promise2, promise3])
+  .then((result) => {
+    console.log(result);
+/* [
+*    { status: 'fulfilled', value: '성공1' },
+*    { status: 'rejected', reason: '실패2' },
+*    { status: 'fulfilled', value: '성공3' }
+*  ]
+*/
+  })
+  .catch((error) => {
+    console.error(error);
+});
+
